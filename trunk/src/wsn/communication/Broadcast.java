@@ -1,7 +1,7 @@
 package wsn.communication;
 
-import Topology.ITopology;
-import agent.IAgent;
+import wsn.topology.ITopology;
+import wsn.agent.IAgent;
 import java.util.Collection;
 
 public class Broadcast
