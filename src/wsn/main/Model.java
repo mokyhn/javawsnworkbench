@@ -28,7 +28,7 @@ public class Model implements IModel {
     private final Random random;    
     
 
-    private final List<IAgent> agents;
+    private final List<ITimeAgent> agents;
     private final MetricTopology topology;
     
     public Model() {
@@ -38,9 +38,25 @@ public class Model implements IModel {
         topology = new MetricTopology(COMMUNICATION_RANGE_RADIUS);
         initializeAgents();
     }
-       
+
+
+    public final void initializeAgents() {
+        
+        
+        for (int id = 0; id < N; id++) {
+            Point p = new Point(  AREA_RADIUS * getRandom().nextDouble(),
+                                AREA_RADIUS * getRandom().nextDouble()); 
+            Agent a = new Agent(id, random, new RelativeClock(abs_clock, random.getInt(10000)));
+            Broadcast broadcast = new Broadcast(a, topology);
+            a.setBroadcaster(broadcast);
+            a.setInboxBuffer(new LimitedMessageBuffer(MAX_INBOX_SIZE));
+            topology.addAgent(a, p);
+            agents.add(a);            
+        }    
+    }    
+    
     @Override
-    public Collection<IAgent> getAgents()
+    public Collection<ITimeAgent> getAgents()
     {
         return agents;
     }
@@ -57,20 +73,6 @@ public class Model implements IModel {
         return abs_clock;
     }
    
-    public final void initializeAgents() {
-        
-        
-        for (int id = 0; id < N; id++) {
-            Point p = new Point(  AREA_RADIUS * getRandom().nextDouble(),
-                                AREA_RADIUS * getRandom().nextDouble()); 
-            Agent a = new Agent(id, random, new RelativeClock(abs_clock, random.getInt(10000)));
-            Broadcast broadcast = new Broadcast(a, topology);
-            a.setBroadcaster(broadcast);
-            a.setInboxBuffer(new LimitedMessageBuffer(MAX_INBOX_SIZE));
-            topology.addAgent(a, p);
-            agents.add(a);            
-        }    
-    }
     
         
     @Override
@@ -86,6 +88,7 @@ public class Model implements IModel {
         return s;
     }
 
+    @Override
     public MetricTopology getTopology()
     {
         return topology;

@@ -9,7 +9,6 @@ public class Simulation
 {
     private final Model model;
     
-    
     // Statistics
     ArrayList<Double> deviation = new ArrayList<>();
 
@@ -34,8 +33,7 @@ public class Simulation
     
     private void collectStatistics()
     {
-        Double[] dummy = {};
-        deviation.add((new MeanAndDeviation(model.getTimeEstimates().toArray(dummy))).deviation());
+        deviation.add((new MeanAndDeviation(model.getTimeEstimates())).deviation());
     }
     
     public void step(int n)

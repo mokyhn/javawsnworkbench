@@ -1,17 +1,19 @@
 package wsn.main;
 
-import wsn.agent.IAgent;
 import java.util.Collection;
-import wsn.time.AbsoluteClock;
+import wsn.agent.ITimeAgent;
 import wsn.math.Random;
+import wsn.time.AbsoluteClock;
+import wsn.topology.MetricTopology;
 
 public interface IModel
 {
 
     AbsoluteClock getAbsoluteClock();
 
-    Collection<IAgent> getAgents();
-
+    Collection<ITimeAgent> getAgents();
+    MetricTopology getTopology();
+    
     Random getRandom();
 
     
