@@ -5,48 +5,33 @@ public class PositiveLong
     private Long value;
     
     public PositiveLong(long l) {
+        assert(l >= 0);
         if (l >= 0)
         {
             this.value = l;
-        }
-        else
-        {
-            throw new IllegalArgumentException();
         }
     }
     
     public void increment()
     {
-        if (value < Long.MAX_VALUE)
-        {
-            value++;
-        }
-        else
-        {
-            throw new ArithmeticException("Overflow");
-        }
+        assert(value < Long.MAX_VALUE);
+        value++;
     }
     
-    public void add(long x) 
+    public void add(long x)
     {
-       if (x < 0) 
-       {
-            throw new IllegalArgumentException();
-       } 
-       else
-       {
-            long tmp = x + value;
+        assert (x >= 0);
 
-            if (tmp < 0)
-            {
-                throw new ArithmeticException("Overflow");
+        long tmp = x + value;
 
-            } 
-            else
-            {
-                this.value = tmp;
-            }
-       }
+        if (tmp < 0)
+        {
+            throw new ArithmeticException("Overflow");
+
+        } else
+        {
+            this.value = tmp;
+        }
     }
     
     public long value() 

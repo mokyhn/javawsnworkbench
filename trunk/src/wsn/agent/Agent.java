@@ -11,7 +11,7 @@ import wsn.communication.IMessage;
 import wsn.communication.TimeMessage;
 import wsn.communication.TimeMessageHeader;
 
-public class Agent extends AbstractAgent implements IAgent, ITimeAgent
+public class Agent extends AbstractAgent implements ITimeAgent
 {    
     
     

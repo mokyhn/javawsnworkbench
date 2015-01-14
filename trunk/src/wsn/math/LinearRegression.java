@@ -1,28 +1,31 @@
 package wsn.math;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class LinearRegression
 {   
     double beta_0, beta_1;
     double r;
 
     
-    public LinearRegression(Double x[], Double y[])
+    public LinearRegression(List<Double> x, List<Double> y)
     {        
         double xmean;
         double ymean;
 
-        assert(x.length == y.length);
-        assert(x.length > 0);
+        assert(x.size() == y.size());
+        assert(x.size() > 0);
         
         MeanAndDeviation mx = new MeanAndDeviation(x);
         MeanAndDeviation my = new MeanAndDeviation(y);
                
-        int m = x.length;
+        int m = x.size();
         
         double sum = 0;
         for (int i = 0; i < m; i++)
         {
-            sum += x[i]*y[i];
+            sum += x.get(i)*y.get(i);
         }
         
         
@@ -67,10 +70,14 @@ public class LinearRegression
     
     public static void main(String[] args) 
     {
-        LinearRegression lr = new LinearRegression(new Double[]{1.0, 2.0, 3.0}, new Double[]{2.0, 3.0, 4.0});
+        LinearRegression lr = new LinearRegression(
+                Arrays.asList(1.0, 2.0, 3.0), 
+                Arrays.asList(2.0, 3.0, 4.0));
         System.out.println(lr.toString());
 
-        LinearRegression lr2 = new LinearRegression(new Double[]{1.0, 4.0, 9.0, 10.0, 11.0}, new Double[]{2.0, 77.0, 92.0, 123.0, 124.0});
+        LinearRegression lr2 = new LinearRegression(
+                Arrays.asList(1.0, 4.0, 9.0, 10.0, 11.0), 
+                Arrays.asList(2.0, 77.0, 92.0, 123.0, 124.0));
         System.out.println(lr2.toString());
         
     }

@@ -1,5 +1,8 @@
 package wsn.math;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MeanAndDeviation
 {
 
@@ -10,7 +13,7 @@ public class MeanAndDeviation
     private final double variance;
     private final double deviation;
     
-    public MeanAndDeviation(Double[] l)
+    public MeanAndDeviation(List<Double> l)
     {
         for (double x : l) 
         {
@@ -45,7 +48,7 @@ public class MeanAndDeviation
     
     public static void main(String[] args) 
     {
-        MeanAndDeviation s = new MeanAndDeviation(new Double[] {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0});
+        MeanAndDeviation s = new MeanAndDeviation(Arrays.asList(1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0));
         System.out.println(s.mean());
         System.out.println(s.deviation());
     }
