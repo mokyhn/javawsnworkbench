@@ -1,8 +1,8 @@
 package wsn.main;
 
 import java.util.Collection;
+import java.util.List;
 import wsn.agent.ITimeAgent;
-import wsn.math.Random;
 import wsn.time.AbsoluteClock;
 import wsn.topology.MetricTopology;
 
@@ -14,7 +14,8 @@ public interface IModel
     Collection<ITimeAgent> getAgents();
     MetricTopology getTopology();
     
-    Random getRandom();
+    
+    List<Double> getTimeEstimates();
 
     
 }

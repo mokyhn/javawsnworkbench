@@ -44,8 +44,8 @@ public class Model implements IModel {
         
         
         for (int id = 0; id < N; id++) {
-            Point p = new Point(  AREA_RADIUS * getRandom().nextDouble(),
-                                AREA_RADIUS * getRandom().nextDouble()); 
+            Point p = new Point(  AREA_RADIUS * random.nextDouble(),
+                                AREA_RADIUS * random.nextDouble()); 
             Agent a = new Agent(id, random, new RelativeClock(abs_clock, random.getInt(10000)));
             Broadcast broadcast = new Broadcast(a, topology);
             a.setBroadcaster(broadcast);
@@ -60,12 +60,7 @@ public class Model implements IModel {
     {
         return agents;
     }
-    
-    @Override
-    public Random getRandom()
-    {
-        return random;
-    }
+   
 
     @Override
     public AbsoluteClock getAbsoluteClock() 
@@ -75,6 +70,24 @@ public class Model implements IModel {
    
     
         
+    @Override
+    public MetricTopology getTopology()
+    {
+        return topology;
+    }
+
+    
+    @Override
+    public List<Double> getTimeEstimates()
+    {
+        ArrayList<Double> times = new ArrayList<>();
+        for (IAgent a : model.getAgents())
+        {
+            times.add(0d + ((ITimeAgent) a).getTimeEstimate());
+        }
+        return times;
+    }
+  
     @Override
     public String toString() {
         String s = "";
@@ -86,24 +99,5 @@ public class Model implements IModel {
             s += "\n" + a.toString() + "\n";
         }
         return s;
-    }
-
-    @Override
-    public MetricTopology getTopology()
-    {
-        return topology;
-    }
-
-    
-    public List<Double> getTimeEstimates()
-    {
-        ArrayList<Double> times = new ArrayList<>();
-        for (IAgent a : model.getAgents())
-        {
-            times.add(0d + ((ITimeAgent) a).getTimeEstimate());
-        }
-        return times;
-    }
-  
-    
+    }    
 }
