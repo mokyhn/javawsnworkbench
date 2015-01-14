@@ -1,15 +1,12 @@
 
 package wsn.main;
 
-import wsn.agent.Agent;
 import wsn.agent.IAgent;
 import wsn.agent.ITimeAgent;
 import java.awt.Graphics;
 import java.awt.Panel;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import wsn.math.Point;
 
@@ -17,7 +14,7 @@ public class PlotModel {
     final static int xpix = 700;
     final static int ypix = 700;
     
-    public static void plot(final Model model) {
+    public static void plot(final IModel model) {
         Double xradius = model.getTopology().actualXRadius();
         Double yradius = model.getTopology().actualYRadius();
         
@@ -87,7 +84,7 @@ public class PlotModel {
     
      
     
-    private static String Html5drawing(Model model) {
+    private static String Html5drawing(IModel model) {
         Double xradius = model.getTopology().actualXRadius();
         Double yradius = model.getTopology().actualYRadius();
         
@@ -115,7 +112,7 @@ public class PlotModel {
     
     }
     
-    public static void dumpModelHTML5(final Model model, String filename) 
+    public static void dumpModelHTML5(final IModel model, String filename) 
     {
         String opening = "<!DOCTYPE html><html><body>";
         String closing = "</body></html>";

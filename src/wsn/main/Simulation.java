@@ -7,14 +7,14 @@ import wsn.math.MeanAndDeviation;
 
 public class Simulation
 {
-    private final Model model;
+    private final IModel model;
     
     // Statistics
     ArrayList<Double> deviation = new ArrayList<>();
 
     
     
-    public Simulation(Model m)
+    public Simulation(IModel m)
     {
         model = m;
     }
