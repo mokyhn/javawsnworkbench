@@ -35,7 +35,7 @@ public class Point
 
     public static double distance(Point p1, Point p2)
     {
-        return Vector.getVector(p1, p2).norm();
+        return new Vector(p1, p2).norm();
     }
 
     public Vector asVector()
@@ -43,6 +43,11 @@ public class Point
         return new Vector(getX(), getY());
     }
 
+    public Point add(Vector v)
+    {
+        return new Point(x+v.getX(), y+v.getY());
+    }
+    
     @Override
     public String toString()
     {

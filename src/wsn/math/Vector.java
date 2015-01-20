@@ -11,13 +11,19 @@ public class Vector
         this.x = x;
         this.y = y;
     }
-
+  
     public Vector(Vector v)
     {
         this.x = v.getX();
         this.y = v.getY();
     }
 
+    public Vector(Point p1, Point p2)
+    {
+        this.x = p2.getX() - p1.getX();
+        this.y = p2.getY() - p1.getY();
+    }
+    
     public double getX()
     {
         return x;
@@ -72,12 +78,14 @@ public class Vector
     {
         return new Vector(getX() + v.getX(), getY() + v.getY());
     }
+   
 
-    public static Vector getVector(Point p1, Point p2)
+    public Vector normalize()
     {
-        return new Vector(p2.getX() - p1.getX(), p2.getY() - p1.getY());
+        double norm = norm();
+        return new Vector(x / norm, y / norm);
     }
-
+    
     @Override
     public String toString()
     {
