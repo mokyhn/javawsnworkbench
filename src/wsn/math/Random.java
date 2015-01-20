@@ -54,8 +54,13 @@ public class Random
         return current;
     }
 
+    /**
+     * 
+     * @param range
+     * @return an integer in interval 0..range-1
+     */
     public int getInt(int range)
     {
-        return (int) (nextDouble() * range);
+        return (int) ((nextDouble()-0.00001) * range);
     }
 }
