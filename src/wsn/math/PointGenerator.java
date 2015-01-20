@@ -21,7 +21,7 @@ public class PointGenerator
             {
                 int m = result.size();
                 Point p = result.get(rnd.getInt(m));                
-                Vector v = new Vector(rnd.nextDouble() * individual_distance, rnd.nextDouble() * individual_distance);                
+                Vector v = new Vector(rnd.nextDouble(), rnd.nextDouble()).multiply(individual_distance *  rnd.nextDouble());                
                 result.add(p.add(v));
                 
             }
