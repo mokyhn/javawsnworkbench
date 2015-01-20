@@ -79,7 +79,11 @@ public class Vector
         return new Vector(getX() + v.getX(), getY() + v.getY());
     }
    
-
+    public Vector multiply(Double s)
+    {
+        return new Vector(getX()*s, getY()*s);
+    }
+    
     public Vector normalize()
     {
         double norm = norm();
