@@ -1,5 +1,6 @@
 package wsn.topology;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -67,6 +68,24 @@ public class MetricTopology implements ITopology
         return neighbors.get(a);
     }
     
+    @Override
+    public Collection<IAgent> getIsolatedAgents()
+    {
+        ArrayList<IAgent> result = new ArrayList<>();
+        
+        for (Map.Entry<IAgent, Point> e : absolutePlacement.entrySet())
+        {
+            IAgent a = e.getKey();
+            
+            if (getNeighbors(a).isEmpty()) {
+                result.add(a);
+            }
+            
+        }
+        
+        return result;
+    }
+    
     public Collection<IAgent> getNeighbors(int a)
     {
         IAgent theOne = null;
@@ -117,6 +136,6 @@ public class MetricTopology implements ITopology
         return Math.abs(yMax - yMin);
     }
 
-  
     
+
 }

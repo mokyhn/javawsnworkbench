@@ -7,4 +7,6 @@ public interface ITopology
 {
     Collection<IAgent> getNeighbors(IAgent a);    
     
+    Collection<IAgent> getIsolatedAgents();
+    
 }
