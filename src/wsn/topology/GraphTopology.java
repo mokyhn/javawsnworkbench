@@ -51,5 +51,11 @@ public class GraphTopology implements ITopology
     {
         return neighbors.get(a);
     }
+
+    @Override
+    public Collection<IAgent> getIsolatedAgents()
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }
