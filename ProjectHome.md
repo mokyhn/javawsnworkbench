@@ -1,0 +1,1 @@
+The idea is to create an OOP encapsulated workbench that enables development of algorithms for WSN's.
